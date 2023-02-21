@@ -1,3 +1,6 @@
+<?= $this->extend('layout/app'); ?>
+
+<?= $this->section('content'); ?>
 <div class="card">
     <div class="card-body">
         <h1>
@@ -15,3 +18,4 @@
         </ul>
     </div>
 </div>
+<?= $this->endSection(); ?>
