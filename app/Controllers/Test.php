@@ -17,7 +17,14 @@ class Test extends BaseController
 
     public function getHitung()
     {
-        $data = [];
+        $data = $this->request->getVar();
+        $bil1 = $data['bil1'] ?? 0;
+        $bil2 = $data['bil2'] ?? 0;
+        $data = [
+            'bil1' => $bil1,
+            'bil2' => $bil2,
+            'hasil' => $bil1 + $bil2,
+        ];
         return view('test/hitung', $data);
     }
 }
