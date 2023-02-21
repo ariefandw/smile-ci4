@@ -12,12 +12,12 @@ class Test extends BaseController
             'alamat' => null,
             'os' => $os,
         ];
-        return view('test', $data);
+        return view('test/test', $data);
     }
 
-    public function getHitung($bil1, $bil2)
+    public function getHitung()
     {
-        $hasil = $bil1 + $bil2;
-        return (string) $hasil;
+        $data = [];
+        return view('test/hitung', $data);
     }
 }
