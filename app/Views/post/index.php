@@ -12,6 +12,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,16 @@
                         </td>
                         <td>
                             <?= $row->description; ?>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="<?= site_url('post/edit/' . $row->id); ?>" class="btn btn-warning">
+                                    <span class="material-symbols-outlined">edit</span>
+                                </a>
+                                <a href="<?= site_url('post/delete'); ?>" class="btn btn-danger">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
