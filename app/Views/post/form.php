@@ -30,7 +30,7 @@
 <script>
     $(document).ready(function () {
         $('#btn-tambah').click(function () {
-            $('#tgl').append('<input type="date" name="tanggal[]" />')
+            $('#tgl').append('<input type="date" name="tanggal[]" class="form-control" />')
         })
 
     }); 
