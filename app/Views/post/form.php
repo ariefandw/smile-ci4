@@ -17,8 +17,8 @@
                 <textarea name="description" class="form-control"><?= $row->description; ?></textarea>
             </div>
             <div id="tgl" class="mt-4"></div>
-            <button type="button" id="btn-tambah" class="btn btn-primary btn-sm">tambah</button>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" id="btn-tambah" class="btn btn-primary btn-sm">tambah</button><br />
+            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
         </form>
 
     </div>
@@ -30,7 +30,19 @@
 <script>
     $(document).ready(function () {
         $('#btn-tambah').click(function () {
-            $('#tgl').append('<input type="date" name="tanggal[]" class="form-control" />')
+            $('#tgl').append(`
+            <div class="row">
+                <div class="col">
+                    <input type="date" name="tanggal[]" class="form-control" />
+                </div>
+                <div class="col">
+                    <button class="btn btn-sm btn-danger tgl-hapus">hapus</button>
+                </div>
+            </div>
+            `)
+            $('.tgl-hapus').click(function () {
+                this.closest(".row").remove();
+            })
         })
 
     }); 

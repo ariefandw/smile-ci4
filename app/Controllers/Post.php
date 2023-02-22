@@ -18,7 +18,7 @@ class Post extends BaseController
         $data = $this->request->getVar();
         $q    = $data['q'] ?? "";
         $rows = $this->model
-            ->where("CONCAT(category, title, description) LIKE '%" . $q . "%'")
+            ->where("CONCAT(category, title, description) LIKE '%$q%'")
             ->findAll();
         $data = [
             'rows' => $rows,
