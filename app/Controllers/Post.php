@@ -7,6 +7,7 @@ use App\Controllers\BaseController;
 class Post extends BaseController
 {
     public $model;
+    public $perPage = 5;
 
     public function __construct()
     {
@@ -20,8 +21,9 @@ class Post extends BaseController
         $rows = $this->model
             ->where("CONCAT(category, title, description) LIKE \"%$q%\"");
         $data = [
-            'rows' => $rows->paginate(5),
+            'rows' => $rows->paginate($this->perPage),
             'pager' => $rows->pager,
+            'perPage' => $this->perPage,
             'q' => $q,
         ];
         return view('post/index', $data);
