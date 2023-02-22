@@ -29,7 +29,7 @@
                 <?php foreach ($rows as $no => $row): ?>
                     <tr>
                         <td>
-                            <?=++$no; ?>
+                            <?=($no + 1) + (($_GET['page'] - 1) * 5); ?>
                         </td>
                         <td>
                             <?= $row->category; ?>
@@ -57,6 +57,11 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?= str_replace(
+            '<a',
+            '<a class="page-link"',
+            str_replace('<li', '<li class="page-item"', $pager->links())
+        ); ?>
     </div>
 </div>
 <?= $this->endSection(); ?>
