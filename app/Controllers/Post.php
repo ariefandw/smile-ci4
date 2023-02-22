@@ -55,4 +55,10 @@ class Post extends BaseController
         $this->model->update($id, $data);
         $this->response->redirect(site_url('post'));
     }
+
+    public function postDelete($id)
+    {
+        $this->model->delete($id);
+        $this->response->redirect(site_url('post'));
+    }
 }
