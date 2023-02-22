@@ -29,7 +29,7 @@
                 <?php foreach ($rows as $no => $row): ?>
                     <tr>
                         <td>
-                            <?=($no + 1) + (($_GET['page'] - 1) * $perPage); ?>
+                            <?=($no + 1) + ((($_GET['page'] ?? 1) - 1) * $perPage); ?>
                         </td>
                         <td>
                             <?= $row->category; ?>

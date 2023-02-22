@@ -42,7 +42,15 @@ class Post extends BaseController
     public function postCreate()
     {
         $data = $this->request->getVar();
-        dd($data);
+
+        $rules      = [
+            'title' => 'required',
+        ];
+        $validation = \Config\Services::validation();
+        if (!$this->validate($rules)) {
+            return 'tidak valid';
+        }
+
         $this->model->insert($data);
         $this->response->redirect(site_url('post'));
     }
