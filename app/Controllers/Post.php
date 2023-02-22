@@ -15,7 +15,9 @@ class Post extends BaseController
 
     public function getIndex()
     {
-        $rows = $this->model->findAll();
+        $rows = $this->model
+            ->where("category LIKE '%1%'")
+            ->findAll();
         $data = [
             'rows' => $rows,
         ];
@@ -35,6 +37,7 @@ class Post extends BaseController
     public function postCreate()
     {
         $data = $this->request->getVar();
+        dd($data);
         $this->model->insert($data);
         $this->response->redirect(site_url('post'));
     }
