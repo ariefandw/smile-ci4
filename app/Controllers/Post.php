@@ -15,11 +15,14 @@ class Post extends BaseController
 
     public function getIndex()
     {
+        $data = $this->request->getVar();
+        $q    = $data['q'] ?? "";
         $rows = $this->model
-            ->where("category LIKE '%1%'")
+            ->where("CONCAT(category, title, description) LIKE '%" . $q . "%'")
             ->findAll();
         $data = [
             'rows' => $rows,
+            'q' => $q,
         ];
         return view('post/index', $data);
     }

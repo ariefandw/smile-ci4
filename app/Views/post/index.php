@@ -5,14 +5,16 @@
     <div class="card-body">
         <h3>Post</h3>
         <a href="<?= site_url('post/new'); ?>" class="btn btn-success">Tambah</a>
-        <div class="row mt-3">
-            <div class="col">
-                <input type="text" name="q" class="form-control">
+        <form action="<?= site_url('post'); ?>" method="get">
+            <div class="row mt-3">
+                <div class="col">
+                    <input type="text" name="q" value="<?= $q; ?>" class="form-control">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success">Cari</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn btn-success">Cari</button>
-            </div>
-        </div>
+        </form>
         <table class="table">
             <thead>
                 <tr>
