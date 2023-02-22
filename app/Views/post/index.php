@@ -4,6 +4,7 @@
 <div class="card">
     <div class="card-body">
         <h3>Post</h3>
+        <a href="<?= site_url('post/new'); ?>" class="btn btn-success">Tambah</a>
         <table class="table">
             <thead>
                 <tr>

@@ -35,7 +35,24 @@ class Post extends BaseController
     public function postCreate()
     {
         $data = $this->request->getVar();
-        dd($data);
+        $this->model->insert($data);
+        $this->response->redirect(site_url('post'));
+    }
+
+    public function getEdit($id)
+    {
+        $row  = $this->model->find($id);
+        $data = [
+            'row' => $row,
+            'action' => site_url('post/update/' . $id),
+        ];
+        return view('post/form', $data);
+    }
+
+    public function postUpdate($id)
+    {
+        $data = $this->request->getVar();
+        $this->model->update($id, $data);
         $this->response->redirect(site_url('post'));
     }
 }
