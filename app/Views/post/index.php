@@ -7,14 +7,18 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">No</th>
                     <th scope="col">Category</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($rows as $row): ?>
+                <?php foreach ($rows as $no => $row): ?>
                     <tr>
+                        <td>
+                            <?=++$no; ?>
+                        </td>
                         <td>
                             <?= $row->category; ?>
                         </td>

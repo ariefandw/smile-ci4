@@ -21,4 +21,21 @@ class Post extends BaseController
         ];
         return view('post/index', $data);
     }
+
+    public function getNew()
+    {
+        $row  = $this->model;
+        $data = [
+            'row' => $row,
+            'action' => site_url('post/create'),
+        ];
+        return view('post/form', $data);
+    }
+
+    public function postCreate()
+    {
+        $data = $this->request->getVar();
+        dd($data);
+        $this->response->redirect(site_url('post'));
+    }
 }
