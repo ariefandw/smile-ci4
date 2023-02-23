@@ -6,6 +6,7 @@ class Test extends BaseController
 {
     public function getIndex()
     {
+        // dd(auth()->loggedIn());
         db_connect()->connect();
         $os   = ['windows', 'mac', 'linux'];
         $data = [

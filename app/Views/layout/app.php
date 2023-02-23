@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('post'); ?>">Post</a>
@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                        <a class="nav-link" href="<?= site_url('logout'); ?>">Logout</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -67,6 +67,20 @@
         </div>
     </nav>
     <div class="container mt-3">
+
+        <?php if (!empty(session()->getFlashdata('success'))): ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if (!empty(session()->getFlashdata('danger'))): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('danger'); ?>
+            </div>
+        <?php endif; ?>
+
         <?= $this->renderSection('content'); ?>
     </div>
 

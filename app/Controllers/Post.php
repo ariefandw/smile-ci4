@@ -57,6 +57,7 @@ class Post extends BaseController
         }
 
         $this->model->insert($data);
+        session()->setFlashdata('success', 'Data berhasil ditambahkan');
         $this->response->redirect(site_url('post'));
     }
 
@@ -75,12 +76,18 @@ class Post extends BaseController
     {
         $data = $this->request->getVar();
         $this->model->update($id, $data);
+        session()->setFlashdata('success', 'Data berhasil diupdate');
         $this->response->redirect(site_url('post'));
     }
 
     public function postDelete($id)
     {
-        $this->model->delete($id);
+        try {
+            $this->model->delete($id);
+            session()->setFlashdata('success', 'Data berhasil dihapus');
+        } catch (\Throwable $th) {
+            session()->setFlashdata('danger', $th->getMessage());
+        }
         $this->response->redirect(site_url('post'));
     }
 }
