@@ -7,11 +7,13 @@ use App\Controllers\BaseController;
 class Post extends BaseController
 {
     public $model;
+    public $categories;
     public $perPage = 5;
 
     public function __construct()
     {
-        $this->model = new \App\Models\Post();
+        $this->model      = new \App\Models\Post();
+        $this->categories = (new \App\Models\Category())->findAll();
     }
 
     public function getIndex()
@@ -19,11 +21,11 @@ class Post extends BaseController
         $data = $this->request->getVar();
         $q    = $data['q'] ?? "";
         $rows = $this->model
-            ->where("CONCAT(category, title, description) LIKE \"%$q%\"");
+            ->where("CONCAT(category, title, description) LIKE \"%$q%\"")
+            ->orderBy('updated_at', 'desc');
         $data = [
             'rows' => $rows->paginate($this->perPage),
             'pager' => $rows->pager,
-            'perPage' => $this->perPage,
             'q' => $q,
         ];
         return view('post/index', $data);
@@ -33,6 +35,7 @@ class Post extends BaseController
     {
         $row  = $this->model;
         $data = [
+            'categories' => $this->categories,
             'row' => $row,
             'action' => site_url('post/create'),
         ];
@@ -59,6 +62,7 @@ class Post extends BaseController
     {
         $row  = $this->model->find($id);
         $data = [
+            'categories' => $this->categories,
             'row' => $row,
             'action' => site_url('post/update/' . $id),
         ];

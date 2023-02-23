@@ -10,6 +10,7 @@ class Post extends Seeder
     {
         $faker = \Faker\Factory::create();
         $post  = new \App\Models\Post();
+        $post->truncate();
         for ($i = 0; $i < 20; $i++) {
             $data = [
                 'category' => $faker->numberBetween(1, 3),
