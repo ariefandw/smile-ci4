@@ -7,7 +7,13 @@
         <form action="<?= $action; ?>" method="post">
             <div class="mb-3">
                 <label class="form-label">Category</label>
-                <input type="number" name="category" value="<?= $row->category; ?>" class="form-control">
+                <select name="category" class="form-control">
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->id; ?>">
+                            <?= $category->category_name; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Title</label>
