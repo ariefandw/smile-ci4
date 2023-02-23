@@ -9,7 +9,7 @@
                 <label class="form-label">Category</label>
                 <select name="category_id" class="form-control">
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id; ?>">
+                        <option value="<?= $category->id; ?>" <?= $category->id == $row->category_id ? 'selected' : ''; ?>>
                             <?= $category->category_name; ?>
                         </option>
                     <?php endforeach; ?>

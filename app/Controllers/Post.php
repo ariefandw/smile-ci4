@@ -21,6 +21,7 @@ class Post extends BaseController
         $data = $this->request->getVar();
         $q    = $data['q'] ?? "";
         $rows = $this->model
+            ->select('post.*, category_name, category_description')
             ->join('category', 'category.id = post.category_id')
             ->where("CONCAT(category_name, title, description) LIKE \"%$q%\"")
             ->orderBy('updated_at', 'desc');
