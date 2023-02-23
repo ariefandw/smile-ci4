@@ -13,7 +13,7 @@ class Post extends Migration
                 'type' => 'INT',
                 'auto_increment' => true
             ],
-            'category' => [
+            'category_id' => [
                 'type' => 'INT',
             ],
             'title' => [

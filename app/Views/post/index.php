@@ -32,7 +32,7 @@
                             <?=($no + 1) + ((($_GET['page'] ?? 1) - 1) * $pager->getPerPage()); ?>
                         </td>
                         <td>
-                            <?= $row->category; ?>
+                            <?= $row->category_name; ?>
                         </td>
                         <td>
                             <?= $row->title; ?>

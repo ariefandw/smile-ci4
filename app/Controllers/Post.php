@@ -21,7 +21,8 @@ class Post extends BaseController
         $data = $this->request->getVar();
         $q    = $data['q'] ?? "";
         $rows = $this->model
-            ->where("CONCAT(category, title, description) LIKE \"%$q%\"")
+            ->join('category', 'category.id = post.category_id')
+            ->where("CONCAT(category_name, title, description) LIKE \"%$q%\"")
             ->orderBy('updated_at', 'desc');
         $data = [
             'rows' => $rows->paginate($this->perPage),

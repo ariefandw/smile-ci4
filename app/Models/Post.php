@@ -14,7 +14,7 @@ class Post extends Model
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['category', 'title', 'description'];
+    protected $allowedFields = ['category_id', 'title', 'description'];
 
     // Dates
     protected $useTimestamps = true;

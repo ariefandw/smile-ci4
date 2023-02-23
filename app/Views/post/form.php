@@ -7,7 +7,7 @@
         <form action="<?= $action; ?>" method="post">
             <div class="mb-3">
                 <label class="form-label">Category</label>
-                <select name="category" class="form-control">
+                <select name="category_id" class="form-control">
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= $category->id; ?>">
                             <?= $category->category_name; ?>

@@ -13,7 +13,7 @@ class Post extends Seeder
         $post->truncate();
         for ($i = 0; $i < 20; $i++) {
             $data = [
-                'category' => $faker->numberBetween(1, 3),
+                'category_id' => $faker->numberBetween(1, 3),
                 'title' => $faker->name(),
                 'description' => $faker->text(),
             ];

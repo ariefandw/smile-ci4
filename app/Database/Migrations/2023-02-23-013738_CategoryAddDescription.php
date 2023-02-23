@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Category extends Migration
+class CategoryAddDescription extends Migration
 {
     public function up()
     {
