@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use Dompdf\Dompdf;
 
 class Post extends BaseController
 {
@@ -90,4 +91,31 @@ class Post extends BaseController
         }
         $this->response->redirect(site_url('post'));
     }
+
+    public function getPrint()
+    {
+        $filename = date('y-m-d_H.i.s') . '-surat_tugas';
+        $dompdf   = new Dompdf();
+        $data     = $this->request->getVar();
+        $q        = $data['q'] ?? "";
+        $rows     = $this->model
+            ->select('post.*, category_name, category_description')
+            ->join('category', 'category.id = post.category_id')
+            ->where("CONCAT(category_name, title, description) LIKE \"%$q%\"")
+            ->orderBy('updated_at', 'desc');
+        $data     = [
+            'rows' => $rows->paginate($this->perPage),
+            'pager' => $rows->pager,
+            'q' => $q,
+        ];
+
+        $dompdf->getOptions()->setChroot(FCPATH);
+        $dompdf->loadHtml(view('post/print', $data));
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("$filename.pdf", ['Attachment' => 0]);
+        exit;
+    }
+
+
 }
