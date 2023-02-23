@@ -12,7 +12,7 @@ class Post extends Seeder
         $post  = new \App\Models\Post();
         for ($i = 0; $i < 20; $i++) {
             $data = [
-                'category' => $faker->numerify(),
+                'category' => $faker->numberBetween(1, 3),
                 'title' => $faker->name(),
                 'description' => $faker->text(),
             ];
